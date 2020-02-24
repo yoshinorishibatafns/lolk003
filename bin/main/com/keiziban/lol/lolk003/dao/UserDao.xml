@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.keiziban.lol.lolk003.dao.UserDao">
-    <select id="selectAll" resultType="com.keiziban.lol.lolk003.entity.UserEntity">
-        SELECT * from public."USER_DEMO1";
-    </select>
-</mapper>
