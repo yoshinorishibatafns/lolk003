@@ -1,115 +1,78 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+  <div class="container">
+    <h1>{{ msg }}{{ userName }}</h1>
+    <div class="btn-toolbar">
+      <div class="btn-group">
+      <KbnButton
+        :class=this.classes
+        :disabled=false
+        @click="goToSignUp"
+      >
+        新規登録
+      </KbnButton>
+      <KbnButton
+        :class=this.classes
+        :disabled=false
+        @click="goToLogin"
+      >
+        ログイン
+      </KbnButton>
+      <KbnButton
+        :class=this.classes
+        :disabled=false
+        @click="goToPage2"
+      >
+        Page2
+      </KbnButton>
+      </div>
+    </div>
     <router-link to="/SignUp">新規登録</router-link>
     <router-link to="/Page2">Page2</router-link>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <router-link to="/LoginView">ログイン</router-link>
   </div>
 </template>
 
 <script>
+import KbnButton from './atoms/KbnButton'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'ようこそ',
+      userNmae: '',
+      classes: 'btn btn-primary text-white'
     }
+  },
+  components: {
+    KbnButton
+  },
+  methods: {
+    goToSignUp () {
+      this.$router.push({
+        name: 'SignUp'
+      })
+    },
+    goToLogin () {
+      this.$router.push({
+        name: 'LoginView'
+      })
+    },
+    goToPage2 () {
+      this.$router.push({
+        name: 'Page2'
+      })
+    }
+  },
+  created: function () {
+    let userName = localStorage.getItem('token')
+    // todo: 逆
+    if (!userName) userName = 'ゲストさん'
+    this.userName = userName
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

@@ -5,8 +5,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class TempRegistResult extends BaseResult {
+public class AuthResult extends BaseResult {
     private String mail;
     private String password;
-    private String pin;
+    private String token;
+    private boolean loginResult;
 }

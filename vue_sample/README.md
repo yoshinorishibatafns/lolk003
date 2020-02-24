@@ -1,6 +1,6 @@
-# vuesample
+# vue_sample
 
-> vuewsampledao
+> A Vue.js project
 
 ## Build Setup
 

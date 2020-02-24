@@ -3,7 +3,13 @@
       <h1>{{ msg }}</h1>
       <h1>{{ childMsg }}</h1>
       <p>hello page2</p>
-    <button class="btn btn-default">default</button>
+    <button class="btn btn-default" @click="handleLogout">ログアウト</button>
+    <p
+      v-if="progress"
+      class="progress"
+    >
+      {{ message }}
+    </p>
     <button class="btn btn-primary">primary</button>
     <button class="btn btn-success">success</button>
     <button class="btn btn-danger">danger</button>
@@ -32,10 +38,32 @@ export default {
       childMsg: '',
       mail: this.$route.params.mail,
       password: this.$route.params.password,
-      pin: this.$route.params.pin
+      pin: this.$route.params.pin,
+      progress: false,
+      message: ''
     }
   },
   methods: {
+    setProgress (message) {
+      this.progress = true
+      this.message = message
+    },
+    resetProgress () {
+      this.progress = false
+      this.message = ''
+    },
+    handleLogout () {
+      this.setProgress('ログオフ中...')
+
+      return this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push({ path: '/' })
+        })
+        .catch(err => Promise.reject(err))
+        .then(() => {
+          this.resetProgress()
+        })
+    },
     childMsgMethod (str) {
       this.modal = false
       this.childMsg = str

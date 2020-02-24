@@ -3,10 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import 'bootstrap/dist/css/bootstrap.css'
 
 import 'bootstrap/dist/css/shibata.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import 'es6-promise/auto'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -14,6 +16,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

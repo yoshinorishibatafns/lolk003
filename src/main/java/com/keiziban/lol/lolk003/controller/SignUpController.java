@@ -42,7 +42,7 @@ public class SignUpController extends BaseController {
             BeanUtils.copyProperties(tempRegistResult, form);
             return super.returnValidatedErrors(bindingResult, tempRegistResult);
         }
-// asdfasdfasdf
+
         final UserDto userDto = new UserDto();
         BeanUtils.copyProperties(userDto, form);
         final TempRegistResult tempRegistResult = signUpService.sendPin(userDto);

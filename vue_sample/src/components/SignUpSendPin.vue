@@ -13,7 +13,7 @@
               </div>
             </div>
             <div class="form-group">
-                <a href="#" class="btn btn-primary" @click="testMethod" tabindex="">送信</a>
+                <a class="btn btn-primary" @click="testMethod" tabindex="">送信</a>
             </div>
         </form>
         </div>

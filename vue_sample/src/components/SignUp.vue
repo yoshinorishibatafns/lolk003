@@ -29,11 +29,14 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-3 offset-sm-4">
-                <a href="#" class="btn btn-primary" @click="testMethod" tabindex="">仮登録</a>
+                <a class="btn btn-primary text-white" @click="testMethod" tabindex="">仮登録</a>
+                <a class="btn btn-primary text-white" @click="returnMethod" tabindex="">戻る</a>
+                <button class="btn btn-primary" @click="testMethod" tabindex="">仮登録</button>
+                <button class="btn btn-primary" @click="returnMethod" tabindex="">戻る</button>
               </div>
-              <div class="col-sm-3">
+              <!-- <div class="col-sm-3">
                 <router-link to="/" class="btn btn-primary">戻る</router-link>
-              </div>
+              </div> -->
             </div>
         </form>
     </div>
@@ -76,6 +79,15 @@ export default {
           console.log(this.tempRegistReslut)
           if (this.tempRegistReslut.errors.length > 0) {
             this.errors = this.tempRegistReslut.errors
+            // this.$router.push({
+            //   name: 'SignUp',
+            //   params: {
+            //     mail: this.tempRegistReslut.mail,
+            //     password: this.tempRegistReslut.password,
+            //     confirmPassword: this.confirmPassword,
+            //     errors: this.errors
+            //   }
+            // })
             return
           }
           this.$router.push({
@@ -90,6 +102,11 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    returnMethod () {
+      this.$router.push({
+        name: 'HelloWorld'
+      })
     }
   }
 }

@@ -5,7 +5,7 @@
       <h1>SingUp完了</h1>
         <form class="form-horizontal">
           <div class="form-group">
-              <a href="#" class="btn btn-primary" @click="testMethod" tabindex="">Login</a>
+              <a class="btn btn-primary" @click="testMethod" tabindex="">Login</a>
           </div>
         </form>
         </div>
@@ -23,7 +23,7 @@ export default {
   methods: {
     testMethod () {
       this.$router.push({
-        name: 'Login'
+        name: 'LoginView'
       })
     }
   }

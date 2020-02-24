@@ -5,11 +5,15 @@ import Page2 from '@/components/Page2'
 import SignUp from '@/components/SignUp'
 import SignUpSendPin from '@/components/SignUpSendPin'
 import SignUpSendComplete from '@/components/SignUpSendComplete'
-import Login from '@/components/Login'
+import LoginView from '@/components/LoginView'
+import { authorizeToken } from './guards'
 
 Vue.use(Router)
 
-export default new Router({
+// export default new Router({
+const router = new Router({
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
@@ -19,7 +23,10 @@ export default new Router({
     {
       path: '/page2',
       name: 'Page2',
-      component: Page2
+      component: Page2,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/SignUp',
@@ -37,9 +44,13 @@ export default new Router({
       component: SignUpSendComplete
     },
     {
-      path: '/Login',
-      name: 'Login',
-      component: Login
+      path: '/LoginView',
+      name: 'LoginView',
+      component: LoginView
     }
   ]
 })
+
+router.beforeEach(authorizeToken)
+
+export default router
